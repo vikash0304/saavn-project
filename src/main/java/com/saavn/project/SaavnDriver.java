@@ -31,6 +31,7 @@ public class SaavnDriver extends Configured implements Tool {
 	private static final String JOB_NAME = "Saavn Top Trending songs";
 	
 	public static void main(String[] args) throws Exception {
+		log.info("input parameters: {}",args);
 		int returnStatus = ToolRunner.run(new Configuration(),
 				new SaavnDriver(), args);
 		System.exit(returnStatus);

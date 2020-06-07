@@ -6,6 +6,8 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.saavn.project.KeyWritable;
 
@@ -16,6 +18,7 @@ import com.saavn.project.KeyWritable;
  */
 public class SaavnMapper extends Mapper<LongWritable, Text, KeyWritable, IntWritable > {
 	
+	private static final Logger log = LoggerFactory.getLogger(SaavnMapper.class);
 	public static final int START_DATE = 24;
 	private static final int END_DATE = 31;
 	
@@ -36,6 +39,7 @@ public class SaavnMapper extends Mapper<LongWritable, Text, KeyWritable, IntWrit
 			}
 			
 		} catch (Exception e) {
+			log.error("Unable to map values: {}",e.getMessage());
 			e.printStackTrace();
 		}
 	}	
